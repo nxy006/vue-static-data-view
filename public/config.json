@@ -1,0 +1,32 @@
+getConfig({
+  "title": "信息管理模板",
+  "config": {
+  "fields": [{
+      "name": "名称",
+      "show_name": "名称",
+      "key": "name",
+      "type": "string",
+      "searchable": true
+    }, {
+      "name": "description",
+      "show_name": "描述",
+      "key": "description",
+      "type": "string",
+      "searchable": true
+    }, {
+      "name": "type",
+      "show_name": "分类",
+      "key": "type",
+      "type": "string",
+      "searchable": false
+    }, {
+      "name": "amount",
+      "show_name": "价格",
+      "key": "amount",
+      "type": "number",
+      "searchable": false,
+      "filterable": true,
+      "filter_type": ""
+    }]
+  }
+})

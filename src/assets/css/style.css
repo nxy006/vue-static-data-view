@@ -1,0 +1,52 @@
+.hw-100 {
+  height: 100%;
+  width: 100%;
+}
+
+#container {
+  width: 100%;
+  margin:auto;
+
+}
+
+
+.el-header,
+.el-footer {
+  background-image:
+    linear-gradient(to bottom, rgba(255,255,255,0.3), rgba(255,255,255,0)), 
+    url("http://lychee.nxy006.work/uploads/big/caad5055b3be98a21371226fa2697366.jpg");
+  background-position: center;
+  color: var(--el-text-color-primary);
+  text-align: center;
+  line-height: 60px;
+  margin: 0px;
+}
+
+.bg-purple {
+  background: #d3dce6;
+}
+
+.box-card {
+  margin-bottom: 20px;
+}
+
+.info-card-body {
+  min-height: 250px;
+}
+
+
+
+.fiter-collapse,
+.fiter-collapse .el-collapse-item__header,
+.fiter-collapse .el-collapse-item__wrap {
+  border: 0px;
+}
+
+.fiter-collapse .el-collapse-item__header {
+  font-size: 18px
+}
+
+.fiter-collapse .el-collapse-item__content {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}

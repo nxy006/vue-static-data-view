@@ -1,0 +1,35 @@
+const data = [
+  {
+    "name": "示例数据1",
+    "description": "示例描述文字|示例描述文字|示例描述文字|示例描述文字|示例描述文字|示例描述文字",
+    "preview_urls": [
+        "https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+    ],
+    "amount": 100.0,
+    "type": "分类一",
+    "tags": ["标签一"]
+  },
+  {
+    "name": "示例数据2",
+    "description": "示例描述文字|示例描述文字|示例描述文字|示例描述文字|示例描述文字|示例描述文字",
+    "preview_urls": [
+        "https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+    ],
+    "amount": 150.0,
+    "type": "分类二",
+    "tags": ["标签一", "标签二"]
+  },
+  {
+    "name": "示例数据3",
+    "description": "示例描述文字|示例描述文字|示例描述文字|示例描述文字|示例描述文字|示例描述文字",
+    "preview_urls": [
+        "https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+    ],
+    "amount": 200.0,
+    "type": "分类三",
+    "tags": ["标签一", "标签三"]
+  },
+]
+
+// DOT MODIFY 不要修改
+getData(data);
