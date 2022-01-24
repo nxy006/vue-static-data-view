@@ -13,21 +13,56 @@
           class="main-content">
 
           <!-- 数据展示 -->
-          <div class="mb-3">
-            <p>共计 {{items.length}} 条数据</p>
+          <div class="data-panel my-3">
+            <div class="data-info mb-2">
+              <!-- 字段和排序信息展示 -->
+              <div>
+                <a>共计 {{items.length}} 条数据</a>
+                <a class="ms-5">排序： </a>
+                <el-dropdown>
+                  <span class="el-dropdown-link">
+                    {{ sort_with }}
+                    <el-icon class="el-icon--right">
+                      <arrow-down />
+                    </el-icon>
+                  </span>
+                  <template #dropdown>
+                    <el-dropdown-menu>
+                      <el-dropdown-item @click="sort_with = '原始排序'">原始排序</el-dropdown-item>
+                      <el-dropdown-item @click="sort_with = '名称'" disabled>名称</el-dropdown-item>
+                      <el-dropdown-item @click="sort_with = '分类'" disabled>分类</el-dropdown-item>
+                      <el-dropdown-item @click="sort_with = '价格'" disabled>价格</el-dropdown-item>
+                    </el-dropdown-menu>
+                  </template>
+                </el-dropdown>
+              </div>
+              
+              <div class="layout-radio">
+                <el-radio-group v-model="current_layout" size="small">
+                  <el-radio-button label="card" name="card">
+                    <el-icon :size="24"><postcard /></el-icon> 列表视图
+                  </el-radio-button>
+                  <el-radio-button name="grid" disabled>
+                    <el-icon :size="24"><grid  /></el-icon> 网格视图
+                  </el-radio-button>
+                </el-radio-group>
+              </div>
+            </div>
 
-            <el-tag
-              v-for="(filter, i) in filters" :key="filter"
-              v-show="filter.filtered"
-              class="me-2"
-              closable
-              color="white"
-              effect="plain"
-              size="large"
-              @close="clearFiter(filter, i)"
-            >
-              {{ filter.show_name }}：{{ filter.show_value }}
-            </el-tag>
+            <div>
+              <el-tag
+                v-for="(filter, i) in filters" :key="filter"
+                v-show="filter.filtered"
+                class="me-2"
+                closable
+                color="white"
+                effect="plain"
+                size="large"
+                @close="clearFiter(filter, i)"
+              >
+                {{ filter.show_name }}：{{ filter.show_value }}
+              </el-tag>
+            </div>
           </div>
 
           <data-card-layout :items="items"/>
@@ -53,6 +88,8 @@ export default {
   data() {
     return {
       title: 'Information Page',
+      current_layout: 'card',
+      sort_with: "原始排序",
       origin_items: [],
       items: [],
       config: {},
@@ -165,4 +202,17 @@ export default {
   width: 1280px;
   margin: 10px auto;
 }
+
+/* .layout-radio .el-radio-button__inner {
+  padding: 0px;
+} */
+.data-panel .data-info {
+  display: flex; align-items: center;justify-content:space-between
+}
+
+.data-panel .el-dropdown {
+  color: var(--el-color-primary);
+  font-size: 16px;
+}
+
 </style>
