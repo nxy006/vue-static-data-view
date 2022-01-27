@@ -1,9 +1,18 @@
 <template>
-  <!-- <el-card v-if="filter.type === 'search'" class="box-card" :body-style="{ padding: '20px' }" :style="{ 'margin-bottom': '10px' }" shadow="never">
-    
-  </el-card> -->
-
-  <el-input class="mb-3" v-model="filter.value" size="large" @input="changValue()" placeholder="搜索" />
+  <el-input
+    class="mb-3"
+    v-model="edit_value"
+    placeholder="搜索"
+    prefix-icon="Search"
+    size="large"
+    @change="changValue()">
+    <template #suffix>
+      <!-- TODO el-icon 绝对布局居中待优化-->
+      <el-link type="primary" :underline="false" class="me-4">
+        查询 <el-icon style="position: absolute; top: 30%" class="ms-2"><arrow-right /></el-icon>
+      </el-link>
+    </template>
+  </el-input>
 </template>
 
 <script>
@@ -19,11 +28,14 @@ export default {
   },
   data() {
     return {
+      edit_value: "",
       filter: this.modelValue,
     }
   },
   methods: {
     changValue() {
+      this.filter.value = this.edit_value
+      this.edit_value  = ""
       if (this.filter.value === null || this.filter.value === "") {
         this.filter.show_value = ""
         this.filter.filtered = false;

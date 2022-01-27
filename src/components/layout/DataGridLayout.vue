@@ -1,7 +1,23 @@
 <template>
   <div>
-    <div class="data-list">
-      <data-card v-for="item in show_items" :key="item" :data="item" />
+    <div class="data-grid">
+      <el-row :gutter="10" id="aside-filter">
+        <el-col :span="8">
+          <div v-for="(item, i) in show_items" :key="item">
+            <data-grid v-if="i%3 == 0" :data="item" />
+          </div>
+        </el-col>
+        <el-col :span="8">
+          <div v-for="(item, i) in show_items" :key="item">
+            <data-grid v-if="i%3 == 1" :data="item" />
+          </div>
+        </el-col>
+        <el-col :span="8">
+          <div v-for="(item, i) in show_items" :key="item">
+            <data-grid v-if="i%3 == 2" :data="item" />
+          </div>
+        </el-col>
+      </el-row>
       <el-empty
         v-if="show_items === null || show_items.length === 0"
         description="无数据"
@@ -21,19 +37,18 @@
         @size-change="handleSizeChange"
       >
       </el-pagination>
-  </div>
-  
+    </div>
   </div>
   
 </template>
 
 <script>
-import DataCard from '@/components/data/DataCard'
+import DataGrid from '@/components/data/DataGrid'
 
 export default {
-  name: 'DataCardLayout',
+  name: 'DataGridLayout',
   components: {
-    DataCard
+    DataGrid
   },
   props: {
     items: Array
@@ -44,8 +59,8 @@ export default {
       page: {
         total_count: null,
         current_page: null,
-        page_size: 10,
-        page_sizes: [10, 20, 30, 50, 100]
+        page_size: 12,
+        page_sizes: [6, 12, 24, 36, 300]
       }
     }
   },
@@ -67,7 +82,7 @@ export default {
     }
   },
   created() {
-    let default_size = 10, default_sizes = [1, 5, 10, 20, 30, 50, 100];
+    let default_size = 12, default_sizes = [6, 12, 24, 36, 300];
     this.page = {
       total_count: this.items.length,
       current_page: 1,

@@ -52,11 +52,5 @@ export default {
 </script>
 
 <style scoped>
-.box-card {
-  margin-bottom: 20px;
-}
 
-.info-card-body {
-  min-height: 250px;
-}
 </style>

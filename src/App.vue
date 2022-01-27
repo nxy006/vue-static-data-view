@@ -1,6 +1,6 @@
 <template>
   <el-container id="container">
-    <el-header height="300px">{{title}}</el-header>
+    <el-header height="250px">{{title}}</el-header>
     <el-main id="main_view">
       <el-row :gutter="30" id="aside-filter">
         <el-col :span="8">
@@ -39,10 +39,10 @@
               
               <div class="layout-radio">
                 <el-radio-group v-model="current_layout" size="small">
-                  <el-radio-button label="card" name="card">
+                  <el-radio-button label="card" name="card" @click="current_layout = 'card'">
                     <el-icon :size="24"><postcard /></el-icon> 列表视图
                   </el-radio-button>
-                  <el-radio-button name="grid" disabled>
+                  <el-radio-button name="grid" @click="current_layout = 'grid'">
                     <el-icon :size="24"><grid  /></el-icon> 网格视图
                   </el-radio-button>
                 </el-radio-group>
@@ -65,7 +65,8 @@
             </div>
           </div>
 
-          <data-card-layout :items="items"/>
+          <data-card-layout :items="items" v-if="current_layout === 'card'"/>
+          <data-grid-layout :items="items" v-else/>
         </el-col>
       </el-row>
     </el-main>
@@ -75,6 +76,7 @@
 <script>
 import AsideFilter from '@/components/layout/AsideFilter'
 import DataCardLayout from '@/components/layout/DataCardLayout'
+import DataGridLayout from '@/components/layout/DataGridLayout'
 import Filter from '@/util/filter_util.js'
 
 var appVue = null;
@@ -83,7 +85,8 @@ export default {
   name: 'App',
   components: {
     AsideFilter,
-    DataCardLayout
+    DataCardLayout,
+    DataGridLayout
   },
   data() {
     return {
